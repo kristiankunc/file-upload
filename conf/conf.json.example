@@ -1,0 +1,16 @@
+{
+	"db": {
+		"host": "str",
+		"port": int,
+		"user": "str",
+		"password": "str",
+		"database": "str"
+	},
+
+	"ftp": {
+		"host": "str",
+		"user": "str",
+		"password": "str",
+		"directory": "str"
+	}
+}
