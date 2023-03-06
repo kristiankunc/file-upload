@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<link href="{{ url_for('static', path='/css/index.css') }}" rel="stylesheet" />
+		<script src="{{ url_for('static', path='/js/index.js') }}"></script>
+		<script src="{{ url_for('static', path='/js/stringConvert.js') }}"></script>
+	</head>
+	<body>
+		<div class="main-container">
+			<div class="heading">
+				<h1>Anonymous file upload</h1>
+			</div>
+
+			<div class="upload-container">
+				<form action="/upload" method="POST" enctype="multipart/form-data">
+					<input type="file" name="file" id="file" required />
+					<input type="text" name="filename" id="filename" placeholder="File name" required />
+					<input type="submit" value="Upload" />
+				</form>
+			</div>
+
+			<div class="footer">
+				<p>Created by me</p>
+			</div>
+
+			<div class="files-container" id="files-container">
+				<h2>Files</h2>
+				<table id="files-table">
+					<tr>
+						<th>ID</th>
+						<th>Disk name</th>
+						<th>Size</th>
+						<th>Custom name</th>
+						<th>Uploaded at</th>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<script defer>
+			generateFiles(formatString("{{ files }}"));
+		</script>
+	</body>
+</html>
