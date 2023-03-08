@@ -29,7 +29,7 @@ async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "files": dict_files})
 
 
-@ app.get("/file/{file_id}")
+@app.get("/file/{file_id}")
 async def read_file(request: Request, file_id: int):
     file = DB.get_file(config["db"], file_id)
 
@@ -39,7 +39,7 @@ async def read_file(request: Request, file_id: int):
     return templates.TemplateResponse("file.html", {"request": request, "file": file.__dict__})
 
 
-@ app.get("/file/{file_id}/download")
+@app.get("/file/{file_id}/download")
 async def download_file(request: Request, file_id: int):
     file = DB.get_file(config["db"], file_id)
 
@@ -52,7 +52,7 @@ async def download_file(request: Request, file_id: int):
     return StreamingResponse(f)
 
 
-@ app.post("/upload")
+@app.post("/upload")
 async def upload(request: Request):
     file = File("form_data", await request.form())
     await file._calc_size()
